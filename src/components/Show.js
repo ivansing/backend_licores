@@ -25,7 +25,7 @@ const Show = () => {
   const getProducts = async () => {
     const data = await getDocs(productsCollection);
 
-    setProducts(data.docs.map((doc) => ({ id: doc.id })));
+    setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     console.log(products);
   };
 
@@ -48,11 +48,55 @@ const Show = () => {
   return (
     (<div></div>),
     (
-      <h1>
-        {products.map((product) => (
-          <p>{product.getProducts}</p>
-        ))}
-      </h1>
+      <>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <div className="d-grid gap-2">
+                <Link to={"/create"} className="btn btn-secondary mt-2 mb-2">
+                  Nuevo Producto
+                </Link>
+              </div>
+              <table className="table table-dark table-hover">
+                <thead>
+                  <tr>
+                    <th>Categorias</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>URL Imagen</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id}>
+                      <td>{product.category}</td>
+                      <td>{product.name}</td>
+                      <td>{product.price}</td>
+                      <td>{product.imageUrl}</td>
+
+                      <td>
+                        <Link
+                          to={`/edit/${product.id}`}
+                          className="btn btn-light"
+                        >
+                          <i className="fa-solid fa-pen"></i>
+                        </Link>
+                        <button
+                          onClick={() => deleteProduct(product.id)}
+                          className="btn btn-danger"
+                        >
+                          <i className="fa-solid fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </>
     )
   );
 };
