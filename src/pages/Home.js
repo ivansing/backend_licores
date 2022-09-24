@@ -12,10 +12,16 @@ import { db } from "../firebaseConfig/firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { async } from "@firebase/util";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Sidebar from "../components/Sidebar";
+import login from "../auth/Auth";
+
+
 
 const MySwal = withReactContent(Swal);
 
-const Show = () => {
+const Home = () => {
   //  Hooks
   const [products, setProducts] = useState([]);
 
@@ -66,50 +72,7 @@ const Show = () => {
   return (
     <>
       <div>
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="index.html">
-            Tu página
-          </a>
-          <button
-            class="btn btn-link btn-sm order-1 order-lg-0"
-            id="sidebarToggle"
-            href="#!"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-
-          <ul class="navbar-nav d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <li class="nav-item dropdown">
-              <div class="btn-group">
-                <a
-                  class="nav-link dropdown-toggle"
-                  className="btn btn-secondary dropdown-toggle"
-                  id="userDropdown"
-                  href="myModal"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-user fa-fw"></i>
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Cuenta
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" id="logout" href="login.html">
-                      Salir
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
+        <Header />
 
         <div id="layoutSidenav">
           <div id="layoutSidenav_nav">
@@ -256,6 +219,7 @@ const Show = () => {
               </div>
             </nav>
           </div>
+         
           <div id="layoutSidenav_content">
             <main>
               <div class="container-fluid">
@@ -264,47 +228,6 @@ const Show = () => {
                 <div class="container">
                   <div class="row">
                     <div class="col-lg-6">
-                      {/*  <!-- Button trigger modal --> */}
-
-                      {/*  <!-- Modal --> */}
-                      <div
-                        class="modal fade"
-                        id="exampleModal"
-                        tabindex="-1"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                      >
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">
-                                Agregar Producto
-                              </h5>
-                              <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                              >
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">...</div>
-                            <div class="modal-footer">
-                              <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                              >
-                                Cerrar
-                              </button>
-                              <button type="button" class="btn btn-primary">
-                                Guardar Cambios
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                       {/* <!-- Body Products Catalog --> */}
 
                       <div className="container">
@@ -361,22 +284,12 @@ const Show = () => {
                 </div>
               </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-              <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                  <div class="text-muted">Derechos &copy; Pagina Web 2022</div>
-                  <div>
-                    <a href="#">Politica de privacidad</a>
-                    &middot;
-                    <a href="#">Terminos &amp; Condiciones</a>
-                  </div>
-                </div>
-              </div>
-            </footer>
+
+            <Footer />
           </div>
         </div>
       </div>
     </>
   );
 };
-export default Show;
+export default Home;
