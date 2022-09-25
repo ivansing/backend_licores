@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import { async } from "@firebase/util";
+import Home from "../pages/Home";
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -29,6 +30,7 @@ const Create = () => {
 
   return (
     <div className="container">
+      
       <div className="row">
         <div className="col">
           <h1>Crear Producto</h1>
