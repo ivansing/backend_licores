@@ -1,6 +1,6 @@
-import React from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import { NavLink, Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -35,12 +35,12 @@ const Header = () => {
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/register">
                   Cuenta
-                </a>
+                </Link>
               </li>
               <li>
-                <Link className="dropdown-item" id="logout" to="auth">
+                <Link className="dropdown-item" id="logout" to="/login">
                   Salir
                 </Link>
               </li>

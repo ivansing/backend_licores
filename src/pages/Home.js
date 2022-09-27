@@ -1,10 +1,14 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
+import { Route, Routes } from "react-router-dom";
 import Productos from "../components/Productos";
 
+
+
+
 const Home = () => {
-  // Show Table
+  // Show Main Page
   return (
     <>
       <div>
@@ -18,7 +22,9 @@ const Home = () => {
               <div class="container-fluid">
                 <h1 class="mt-4">Principal</h1>
 
-                <Productos />
+                {/**AGREGAR MAS COMPONENTES */}
+                
+                
               </div>
             </main>
 

@@ -17,28 +17,28 @@ import Footer from "./Footer";
 
 const MySwal = withReactContent(Swal);
 
-const Productos = () => {
+const Categorias = () => {
   //  Hooks
-  const [products, setProducts] = useState([]);
+  const [categories, setCategory] = useState([]);
 
   // Ref to db firestore
-  const productsCollection = collection(db, "products");
+  const categoryCollection = collection(db, "categories");
 
   //  Show all docs
-  const getProducts = async () => {
-    const data = await getDocs(productsCollection);
+  const getCategory = async () => {
+    const data = await getDocs(categoryCollection);
 
-    setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //console.log(products);
+    setCategory(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    //console.log(category);
   };
 
   // Update Document
 
   // delete doc
-  const deleteProduct = async (id) => {
-    const productDoc = doc(db, "products", id);
-    await deleteDoc(productDoc);
-    getProducts();
+  const deleteCategory = async (id) => {
+    const categoryDoc = doc(db, "category", id);
+    await deleteDoc(categoryDoc);
+    getCategory();
   };
 
   // Confirm Delete Alert
@@ -54,14 +54,14 @@ const Productos = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call delete Product
-        deleteProduct(id);
+        deleteCategory(id);
         Swal.fire("Borrado!", "Este campo ha sido borrado.", "exitoso");
       }
     });
   };
 
   useEffect(() => {
-    getProducts();
+    getCategory();
   }, []);
 
   return (
@@ -75,7 +75,7 @@ const Productos = () => {
           <div id="layoutSidenav_content">
             <main>
               <div class="container-fluid">
-                <h1 class="mt-4">Productos</h1>
+                <h1 class="mt-4">Categorias</h1>
 
                 <div class="container">
                   <div class="row">
@@ -88,35 +88,35 @@ const Productos = () => {
                                 to="/create"
                                 className="btn btn-secondary mt-2 mb-2"
                               >
-                                Nuevo Producto
+                                Nueva Categoria
                               </Link>
                             </div>
                             <table className="table table-light table-hover">
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
-                                  <th>Categoria</th>
-                                  <th>Precio</th>
+                                  
+                                  
                                   <th>URL Imagen</th>
                                   <th>Acciones</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                {products.map((product) => (
-                                  <tr key={product.id}>
-                                    <td>{product.name}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.price}</td>
-                                    <td>{product.imageUrl}</td>
+                                {categories.map((category) => (
+                                  <tr key={category.id}>
+                                    <td>{category.name}</td>
+                                    
+                                    
+                                    <td>{category.imageUrl}</td>
                                     <td>
                                       <Link
-                                        to={`/edit/${product.id}`}
+                                        to={`/edit/${category.id}`}
                                         className="btn btn-light"
                                       >
                                         <i className="fa-solid fa-pen"></i>
                                       </Link>
                                       <button
-                                        onClick={() => confirmDel(product.id)}
+                                        onClick={() => confirmDel(category.id)}
                                         className="btn btn-danger"
                                       >
                                         <i className="fa-solid fa-trash"></i>
@@ -143,4 +143,4 @@ const Productos = () => {
   );
 };
 
-export default Productos;
+export default Categorias;

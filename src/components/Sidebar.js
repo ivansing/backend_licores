@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+
 
 const Sidebar = () => {
   return (
+
+    
     
     <div id="layoutSidenav_nav">
     <nav
@@ -41,12 +46,12 @@ const Sidebar = () => {
             data-parent="#sidenavAccordion"
           >
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="layout-static.html">
-                Producto
-              </a>
-              <a class="nav-link" href="layout-sidenav-light.html">
+              <Link className="nav-link" to="/productos">
+                Productos
+              </Link>
+              <Link class="nav-link" to="/categorias">
                 Categorias
-              </a>
+              </Link>
             </nav>
           </div>
           <a
@@ -94,7 +99,7 @@ const Sidebar = () => {
                 aria-labelledby="headingOne"
                 data-parent="#sidenavAccordionPages"
               >
-                <nav class="sb-sidenav-menu-nested nav">
+               {/*  <nav class="sb-sidenav-menu-nested nav">
                   <a class="nav-link" href="login.html">
                     Ingresar
                   </a>
@@ -104,7 +109,7 @@ const Sidebar = () => {
                   <a class="nav-link" href="password.html">
                     Olvidaste tu clave
                   </a>
-                </nav>
+                </nav> */}
               </div>
               <a
                 class="nav-link collapsed"

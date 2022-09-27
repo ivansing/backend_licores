@@ -7,8 +7,15 @@ import Edit from "./components/Edit";
 import Home from "./pages/Home";
 import Auth from "./components/Auth";
 import Register from "./components/Register";
+import Productos from "./components/Productos";
+import Login from "./pages/Login";
+import Categorias from "./components/Categorias";
+
 // Router import
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+
+
 
 
 
@@ -23,6 +30,9 @@ function App() {
           <Route path="/edit" element={<Edit />}></Route>
           <Route path="/auth" element={<Auth />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/productos" element={<Productos />}></Route>
+          <Route path="/categorias" element={<Categorias />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           
         </Routes>
       </BrowserRouter>

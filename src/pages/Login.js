@@ -1,9 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 
-const Auth = () => {
+const Login = () => {
+
+  let navigate = useNavigate();
+  
+
   return (
     <>
      <div id="layoutAuthentication">
@@ -29,7 +33,7 @@ const Auth = () => {
                                               <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                               <label class="form-check-label" for="exampleCheck1">Mantener ingresado</label>
                                             </div>
-                                            <button type="submit" class="btn btn-primary"  href="index.html" > Ingresar</button> 
+                                            <button type="submit" class="btn btn-primary"  onClick={() => {navigate('/')}} > Ingresar</button> 
                                           </form>
                                     </div>
                                     <div class="card-footer text-center">
@@ -62,4 +66,4 @@ const Auth = () => {
   )
 }
 
-export default Auth
+export default Login
