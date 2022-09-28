@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import {
   collection,
   getDocs,
-  getDoc,
   deleteDoc,
   doc,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 
@@ -14,12 +14,15 @@ import withReactContent from "sweetalert2-react-content";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import  { getProductById, update } from "./Edit";
+import { Switch } from "@mui/material";
 
 const MySwal = withReactContent(Swal);
 
 const Productos = () => {
   //  Hooks
   const [products, setProducts] = useState([]);
+  const [toggle, setToggle] = useState([]);
 
   // Ref to db firestore
   const productsCollection = collection(db, "products");
@@ -32,7 +35,30 @@ const Productos = () => {
     //console.log(products);
   };
 
+  // Toggle button isPopular
+  
+  const docRef = doc(db, 'products', 'isPopular');
+  const docSnap =  getDoc(docRef);
+
+  //console.log(docSnap.data())
+
+    
+  
+
+  // Toggle button isRecommended
+  const toggleIsRecommended = async (id) => {
+    const recoRef = doc(db, "products", id);
+    const recoSnap = await getDoc(recoRef);
+
+    if (recoSnap.exists()) {
+      toggle ? setToggle(false) : setToggle(true)
+    } else {
+      console.log("No existe");
+    }
+  };
+
   // Update Document
+  // TODO reading id but hot showing the Edit page
 
   // delete doc
   const deleteProduct = async (id) => {
@@ -98,6 +124,8 @@ const Productos = () => {
                                   <th>Categoria</th>
                                   <th>Precio</th>
                                   <th>URL Imagen</th>
+                                  <th>Populares</th>
+                                  <th>Recomendados</th>
                                   <th>Acciones</th>
                                 </tr>
                               </thead>
@@ -108,9 +136,24 @@ const Productos = () => {
                                     <td>{product.category}</td>
                                     <td>{product.price}</td>
                                     <td>{product.imageUrl}</td>
+
+                                    <td>
+                                      <p>{product.isPopular}</p>
+                                    </td>
+
+                                    <td>
+                                      <Switch
+                                        onClick={() =>
+                                          toggleIsRecommended(product.id)
+                                        }
+                                      />
+                                      {toggle ? <span>Prendido</span> : <span>Apagado</span>}
+                                    </td>
+
                                     <td>
                                       <Link
-                                        to={`/edit/${product.id}`}
+                                        onClick={() => update(getProductById(product.id))}
+                                        to={'/edit'}
                                         className="btn btn-light"
                                       >
                                         <i className="fa-solid fa-pen"></i>
