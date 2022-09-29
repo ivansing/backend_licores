@@ -1,13 +1,42 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
-export const Login = () => {
-  let navigate = useNavigate();
+const Login = () => {
+  // Authentication user
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
-  const [user, userState] = useState({ email: "", password: "" });
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState();
+
+  // Event Change
+  const handleChange = ({ target: { name, value } }) =>
+    setUser({ ...user, [name]: value });
+
+  // Handle Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await login(user.email, user.password);
+      navigate("/");
+    } catch (error) {
+        
+       if (error.code === "auth/wrong-password") {
+        setError("La contraseña no es correcta");
+      } else if (error.code === "auth/user-not-found") {
+        setError("El usuario no existe");
+      }  
+     console.log(error.code)
+    }
+  };
 
   return (
-    <>
+    
       <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
           <main>
@@ -19,25 +48,29 @@ export const Login = () => {
                       <h3 class="text-center font-weight-light my-4">
                         Ingresar
                       </h3>
+                      {error && <p>{error}</p>} 
                     </div>
                     <div class="card-body">
-                      <form id="loginForm">
+                      <form id="login-form" onSubmit={handleSubmit}>
                         <div class="form-group">
+                           
                           <label for="login-email">Direccion Email</label>
                           <input
                             type="email"
                             class="form-control"
-                            id="login-email"
+                            name="email"
+                            onChange={handleChange}
                             aria-describedby="emailHelp"
                             required
                           />
                         </div>
                         <div class="form-group">
-                          <label for="login-password">Clave</label>
+                          <label for="login-password">Contraseña</label>
                           <input
                             type="password"
                             class="form-control"
-                            id="login-password"
+                            name="password"
+                            onChange={handleChange}
                             required
                           />
                         </div>
@@ -51,14 +84,7 @@ export const Login = () => {
                             Mantener ingresado
                           </label>
                         </div>
-                        <button
-                          type="submit"
-                          class="btn btn-primary"
-                          onClick={() => {
-                            navigate("/");
-                          }}
-                        >
-                          {" "}
+                        <button type="submit" class="btn btn-primary">
                           Ingresar
                         </button>
                       </form>
@@ -66,7 +92,7 @@ export const Login = () => {
                     <div class="card-footer text-center">
                       <div className="small">
                         <Link to="/register">
-                          ¿No tienes una cuenta? Ingresa
+                          ¿No tienes una cuenta? Registrate
                         </Link>
                       </div>
                     </div>
@@ -91,9 +117,7 @@ export const Login = () => {
           </footer>
         </div>
       </div>
-    </>
-
-    // TODO logut
+    
   );
 };
 

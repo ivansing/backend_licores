@@ -14,13 +14,18 @@ import Categorias from "./components/Categorias";
 // Router import
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={
+            <ProtectedRoute>
+                <Home />
+            </ProtectedRoute>
+          }></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/edit" element={<Edit />}></Route>
           <Route path="/auth" element={<Auth />}></Route>

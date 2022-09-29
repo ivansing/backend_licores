@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
@@ -12,34 +11,32 @@ const Register = () => {
 
   const { signup } = useAuth();
   const navigate = useNavigate();
-  const [error, setError] = useState()
+  const [error, setError] = useState();
 
   // Event Change
   const handleChange = ({ target: { name, value } }) =>
-    // Copy values to update ...user
     setUser({ ...user, [name]: value });
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('')
+    setError("");
     try {
       await signup(user.email, user.password);
       navigate("/");
     } catch (error) {
-        /* if (error.code === "auth/invalid-email") {
-            setError('Correo Invalido')
-        } */
-      setError(error.message);
+      if (error.code === "auth/invalid-email") {
+        setError("Correo Invalido");
+      } else if (error.code === "auth/weak-password") {
+        setError("Contraseña debe contener mas de 6 caracteres");
+      } else if (error.code === "auth/email-already-in-use") {
+        setError("Este email ya esta en uso");
+      }
     }
   };
 
   return (
-    <div>
-
-    {error && <p>{error}</p>}
- 
-<div id="layoutAuthentication">
+    <div id="layoutAuthentication">
       <div id="layoutAuthentication_content">
         <main>
           <div class="container">
@@ -50,6 +47,7 @@ const Register = () => {
                     <h3 class="text-center font-weight-light my-4">
                       Crear una Cuenta
                     </h3>
+                    {error && <p>{error}</p>}
                   </div>
                   <div class="card-body">
                     <form id="signup-form" onSubmit={handleSubmit}>
@@ -67,7 +65,7 @@ const Register = () => {
                         {/* <!--<small id="emailHelp" class="form-text text-muted">Tus datos son guardados seguramente.</small>--> */}
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Clave</label>
+                        <label for="exampleInputPassword1">Contraseña</label>
                         <input
                           type="password"
                           class="form-control"
@@ -85,7 +83,7 @@ const Register = () => {
                   </div>
                   <div class="card-footer text-center">
                     <div class="small">
-                      <Link to="/auth">¿Tienes una cuenta? Ingresa</Link>
+                      <Link to="/login">¿Tienes una cuenta? Ingresa</Link>
                     </div>
                   </div>
                 </div>
@@ -109,8 +107,6 @@ const Register = () => {
         </footer>
       </div>
     </div>
-    </div>
-    
   );
 };
 

@@ -1,9 +1,22 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 
 
 const Header = () => {
+
+
+
+ const {   logout, loading } = useAuth();
+  const navigate = useNavigate();
+
+ const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  }; 
+
+  if(loading) return <h1>Cargandose</h1>
+
   return (
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <Link class="navbar-brand" to="/">
@@ -40,7 +53,12 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" id="logout" to="/login">
+                <Link
+                  className="dropdown-item"
+                  onClick={handleLogout}
+                  id="logout"
+                  /* to="/login" */
+                >
                   Salir
                 </Link>
               </li>
