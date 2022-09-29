@@ -1,5 +1,5 @@
 //import "./styles/App.css";
-import "./styles/styles.css"
+import "./styles/styles.css";
 
 // Components
 import Create from "./components/Create";
@@ -13,17 +13,12 @@ import Categorias from "./components/Categorias";
 
 // Router import
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-
-
-
-
+import { AuthProvider } from "./context/authContext";
 
 function App() {
   return (
-    
     <div className="App">
-      <BrowserRouter>
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/create" element={<Create />}></Route>
@@ -33,11 +28,9 @@ function App() {
           <Route path="/productos" element={<Productos />}></Route>
           <Route path="/categorias" element={<Categorias />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          
         </Routes>
-      </BrowserRouter>
+      </AuthProvider>
     </div>
-  
   );
 }
 
