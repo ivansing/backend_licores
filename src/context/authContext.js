@@ -4,6 +4,9 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig/firebase";
 import { useState } from "react";
@@ -43,6 +46,17 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = () => signOut(auth);
 
+  // Login Google
+  const loginWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  // Reset Password
+  const resetPassword = (email) => {
+    sendPasswordResetEmail(auth, email);
+  };
+
   // Check if user is logged in
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -54,7 +68,17 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <authContext.Provider value={{ signup, login, user, logout, loading }}>
+    <authContext.Provider
+      value={{
+        signup,
+        login,
+        user,
+        logout,
+        loading,
+        loginWithGoogle,
+        resetPassword,
+      }}
+    >
       {children}
     </authContext.Provider>
   );

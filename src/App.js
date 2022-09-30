@@ -5,7 +5,7 @@ import "./styles/styles.css";
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import Home from "./pages/Home";
-import Auth from "./components/Auth";
+import Alert from "./components/Alert"
 import Register from "./components/Register";
 import Productos from "./components/Productos";
 import Login from "./pages/Login";
@@ -28,7 +28,7 @@ function App() {
           }></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/edit" element={<Edit />}></Route>
-          <Route path="/auth" element={<Auth />}></Route>
+          <Route path="/alert" element={<Alert />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/productos" element={<Productos />}></Route>
           <Route path="/categorias" element={<Categorias />}></Route>

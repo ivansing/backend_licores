@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import { Alert } from "../components/Alert";
+
 
 const Register = () => {
   // Authentication user
@@ -47,7 +49,7 @@ const Register = () => {
                     <h3 class="text-center font-weight-light my-4">
                       Crear una Cuenta
                     </h3>
-                    {error && <p>{error}</p>}
+                    {error && <Alert message={error} />}
                   </div>
                   <div class="card-body">
                     <form id="signup-form" onSubmit={handleSubmit}>

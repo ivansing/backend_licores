@@ -120,19 +120,20 @@ const Productos = () => {
                             <table className="table table-light table-hover">
                               <thead>
                                 <tr>
-                                  <th>Nombre</th>
-                                  <th>Categoria</th>
-                                  <th>Precio</th>
-                                  <th>URL Imagen</th>
-                                  <th>Populares</th>
-                                  <th>Recomendados</th>
-                                  <th>Acciones</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Categoria</th>
+                                  <th scope="col">Precio</th>
+                                  <th scope="col">URL Imagen</th>
+                                  <th scope="col">Populares</th>
+                                  <th scope="col">Recomendados</th>
+                                  <th scope="col">Acciones</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 {products.map((product) => (
                                   <tr key={product.id}>
-                                    <td>{product.name}</td>
+                                    
+                                    <td >{product.name}</td>
                                     <td>{product.category}</td>
                                     <td>{product.price}</td>
                                     <td>{product.imageUrl}</td>

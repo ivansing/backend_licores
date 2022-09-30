@@ -5,15 +5,7 @@ import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { ClassNames } from "@emotion/react";
 
-
-
 export const Home = () => {
-  
-    
-  
-
- 
-
   // Show Main Page
   return (
     <>
@@ -37,6 +29,5 @@ export const Home = () => {
     </>
   );
 };
-
 
 export default Home;

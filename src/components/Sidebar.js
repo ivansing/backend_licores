@@ -10,7 +10,7 @@ import { useAuth } from "../context/authContext";
 const Sidebar = () => {
   
   const { user} = useAuth();
-  
+  console.log(user)
 
   return (
     <div id="layoutSidenav_nav">
@@ -149,7 +149,7 @@ const Sidebar = () => {
           </div>
           <div class="sb-sidenav-footer">
             <div class="small">Ingresado como:</div>
-              {user.email}  
+              {user.displayName || user.email}  
           </div>
         </div>
       </nav>
