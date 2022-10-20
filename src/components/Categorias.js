@@ -36,7 +36,7 @@ const Categorias = () => {
 
   // delete doc
   const deleteCategory = async (id) => {
-    const categoryDoc = doc(db, "category", id);
+    const categoryDoc = doc(db, "categories", id);
     await deleteDoc(categoryDoc);
     getCategory();
   };
@@ -85,7 +85,7 @@ const Categorias = () => {
                           <div className="col">
                             <div className="d-grid gap-2">
                               <Link
-                                to="/create"
+                                to="/createCategory"
                                 className="btn btn-secondary mt-2 mb-2"
                               >
                                 Nueva Categoria
@@ -95,8 +95,6 @@ const Categorias = () => {
                               <thead>
                                 <tr>
                                   <th>Nombre</th>
-                                  
-                                  
                                   <th>URL Imagen</th>
                                   <th>Acciones</th>
                                 </tr>
@@ -105,8 +103,6 @@ const Categorias = () => {
                                 {categories.map((category) => (
                                   <tr key={category.id}>
                                     <td>{category.name}</td>
-                                    
-                                    
                                     <td>{category.imageUrl}</td>
                                     <td>
                                       <Link

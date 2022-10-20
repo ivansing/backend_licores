@@ -1,36 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
-
-
 const Header = () => {
-
-
-
- const {   logout, loading } = useAuth();
+  const { logout, loading } = useAuth();
   const navigate = useNavigate();
 
- const handleLogout = async () => {
+  const handleLogout = async () => {
     await logout();
     navigate("/login");
-  }; 
+  };
 
-  if(loading) return <h1>Cargandose</h1>
+  if (loading) return <h1>Cargandose</h1>;
 
   return (
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand-lg navbar-dark bg-dark">
       <Link class="navbar-brand" to="/">
-        Panel Administrativo 
+        Panel Administrativo
       </Link>
-      {/* <button
+      <button
         class="btn btn-link btn-sm order-1 order-lg-0"
         id="sidebarToggle"
-        href="#!"
+        href="#"
       >
         <i class="fas fa-bars"></i>
-      </button> */}
+      </button>
 
-      <ul class="navbar-nav d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <ul class="navbar-nav  d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <li class="nav-item dropdown">
           <div class="btn-group">
             <a

@@ -8,13 +8,12 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
-
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import  { getProductById, update } from "./Edit";
+import { getProductById, update } from "./Edit";
 import { Switch } from "@mui/material";
 
 const MySwal = withReactContent(Swal);
@@ -32,18 +31,19 @@ const Productos = () => {
     const data = await getDocs(productsCollection);
 
     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //console.log(products);
   };
 
   // Toggle button isPopular
-  
-  const docRef = doc(db, 'products', 'isPopular');
-  const docSnap =  getDoc(docRef);
+  const toggleIsPopular = async (id) => {
+    const recoRef = doc(db, "products", id);
+    const recoSnap = await getDoc(recoRef);
 
-  //console.log(docSnap.data())
-
-    
-  
+    if (recoSnap.exists()) {
+      toggle ? setToggle(false) : setToggle(true);
+    } else {
+      console.log("No existe");
+    }
+  };
 
   // Toggle button isRecommended
   const toggleIsRecommended = async (id) => {
@@ -51,7 +51,7 @@ const Productos = () => {
     const recoSnap = await getDoc(recoRef);
 
     if (recoSnap.exists()) {
-      toggle ? setToggle(false) : setToggle(true)
+      toggle ? setToggle(false) : setToggle(true);
     } else {
       console.log("No existe");
     }
@@ -100,10 +100,10 @@ const Productos = () => {
 
           <div id="layoutSidenav_content">
             <main>
-              <div class="container-fluid">
-                <h1 class="mt-4">Productos</h1>
+              <div class="container-fluid align-items-center">
+                <h1 class="mt-4 ">Productos</h1>
 
-                <div class="container">
+                <div class="container-fluid">
                   <div class="row">
                     <div class="col-lg-6">
                       <div className="container">
@@ -132,14 +132,22 @@ const Productos = () => {
                               <tbody>
                                 {products.map((product) => (
                                   <tr key={product.id}>
-                                    
-                                    <td >{product.name}</td>
+                                    <td>{product.name}</td>
                                     <td>{product.category}</td>
                                     <td>{product.price}</td>
                                     <td>{product.imageUrl}</td>
 
                                     <td>
-                                      <p>{product.isPopular}</p>
+                                      <Switch
+                                        onClick={() =>
+                                          toggleIsPopular(product.id)
+                                        }
+                                      />
+                                      {toggle ? (
+                                        <span>Prendido</span>
+                                      ) : (
+                                        <span>Apagado</span>
+                                      )}
                                     </td>
 
                                     <td>
@@ -148,13 +156,19 @@ const Productos = () => {
                                           toggleIsRecommended(product.id)
                                         }
                                       />
-                                      {toggle ? <span>Prendido</span> : <span>Apagado</span>}
+                                      {toggle ? (
+                                        <span>Prendido</span>
+                                      ) : (
+                                        <span>Apagado</span>
+                                      )}
                                     </td>
 
                                     <td>
                                       <Link
-                                        onClick={() => update(getProductById(product.id))}
-                                        to={'/edit'}
+                                        onClick={() =>
+                                          update(getProductById(product.id))
+                                        }
+                                        to={"/edit"}
                                         className="btn btn-light"
                                       >
                                         <i className="fa-solid fa-pen"></i>

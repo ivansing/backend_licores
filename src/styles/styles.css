@@ -7398,6 +7398,9 @@ button.bg-dark:focus {
   right: 0;
   left: 0;
   z-index: 1030;
+  align-items: stretch;
+  display: flex;
+  width: 100%;
 }
 
 .fixed-bottom {
@@ -10119,6 +10122,8 @@ body {
   padding-top: 56px;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
+  min-width: 300px;
+  max-width: 250px;
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
@@ -10174,6 +10179,9 @@ body {
 }
 .sb-sidenav .sb-sidenav-menu {
   flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
 }
 .sb-sidenav .sb-sidenav-menu .nav {
   flex-direction: column;

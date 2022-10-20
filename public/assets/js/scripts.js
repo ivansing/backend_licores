@@ -17,12 +17,14 @@
     // Toggle the side navigation
     $("#sidebarToggle").on("click", function(e) {
         e.preventDefault();
-        $("body").toggleClass("sb-sidenav-toggled");
+        $("sidenavAccordion").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
 
 $('#modal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
+
+
 
 
