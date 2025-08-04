@@ -246,6 +246,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Maintained by**: Development Team  
+**Maintained by**: Ivan Duarte  
 **Last Updated**: August 2025  
 **Version**: 0.1.0
