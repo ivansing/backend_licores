@@ -7,76 +7,76 @@ const Sidebar = () => {
 
   return (
     <div id="layoutSidenav_nav">
-      <nav class="sb-sidenav  accordion sb-sidenav-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <div class="sb-sidenav-menu-heading">Principal</div>
-            <Link class="nav-link" to="/">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-tachometer-alt"></i>
+      <nav className="sb-sidenav  accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div className="sb-sidenav-menu">
+          <div className="nav">
+            <div className="sb-sidenav-menu-heading">Principal</div>
+            <Link className="nav-link" to="/">
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt"></i>
               </div>
               Panel
             </Link>
-            <div class="sb-sidenav-menu-heading">Tienda</div>
+            <div className="sb-sidenav-menu-heading">Tienda</div>
             <a
-              class="nav-link collapsed"
+              className="nav-link collapsed"
               href="#"
               data-toggle="collapse"
               data-target="#collapseLayouts"
               aria-expanded="false"
               aria-controls="collapseLayouts"
             >
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-columns"></i>
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-columns"></i>
               </div>
               Paginas
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
+              <div className="sb-sidenav-collapse-arrow">
+                <i className="fas fa-angle-down"></i>
               </div>
             </a>
             <div
-              class="collapse"
+              className="collapse"
               id="collapseLayouts"
               aria-labelledby="headingOne"
               data-parent="#sidenavAccordion"
             >
-              <nav class="sb-sidenav-menu-nested nav">
+              <nav className="sb-sidenav-menu-nested nav">
                 <Link className="nav-link" to="/productos">
                   Productos
                 </Link>
-                <Link class="nav-link" to="/categorias">
+                <Link className="nav-link" to="/categorias">
                   Categorias
                 </Link>
               </nav>
             </div>
             <a
-              class="nav-link collapsed"
+              className="nav-link collapsed"
               href="#"
               data-toggle="collapse"
               data-target="#collapsePages"
               aria-expanded="false"
               aria-controls="collapsePages"
             >
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-book-open"></i>
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-book-open"></i>
               </div>
               Clientes
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
+              <div className="sb-sidenav-collapse-arrow">
+                <i className="fas fa-angle-down"></i>
               </div>
             </a>
             <div
-              class="collapse"
+              className="collapse"
               id="collapsePages"
               aria-labelledby="headingTwo"
               data-parent="#sidenavAccordion"
             >
               <nav
-                class="sb-sidenav-menu-nested nav accordion"
+                className="sb-sidenav-menu-nested nav accordion"
                 id="sidenavAccordionPages"
               >
                 <a
-                  class="nav-link collapsed"
+                  className="nav-link collapsed"
                   href="#"
                   data-toggle="collapse"
                   data-target="#pagesCollapseAuth"
@@ -84,30 +84,29 @@ const Sidebar = () => {
                   aria-controls="pagesCollapseAuth"
                 >
                   Datos
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div className="sb-sidenav-collapse-arrow">
+                    <i className="fas fa-angle-down"></i>
                   </div>
                 </a>
                 <div
-                  class="collapse"
+                  className="collapse"
                   id="pagesCollapseAuth"
                   aria-labelledby="headingOne"
                   data-parent="#sidenavAccordionPages"
                 >
-                  {/*  <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="login.html">
-                    Ingresar
-                  </a>
-                  <a class="nav-link" href="register.html">
-                    Registrar
-                  </a>
-                  <a class="nav-link" href="password.html">
-                    Olvidaste tu clave
-                  </a>
-                </nav> */}
+                  <nav className="sb-sidenav-menu-nested nav">
+                    <Link className="nav-link" to="/clientes">
+                      <i className="fas fa-users me-2"></i>
+                      Ver Clientes
+                    </Link>
+                    <Link className="nav-link" to="/register">
+                      <i className="fas fa-user-plus me-2"></i>
+                      Registrar Usuario
+                    </Link>
+                  </nav>
                 </div>
                 <a
-                  class="nav-link collapsed"
+                  className="nav-link collapsed"
                   href="#"
                   data-toggle="collapse"
                   data-target="#pagesCollapseError"
@@ -115,24 +114,24 @@ const Sidebar = () => {
                   aria-controls="pagesCollapseError"
                 >
                   Compras
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div className="sb-sidenav-collapse-arrow">
+                    <i className="fas fa-angle-down"></i>
                   </div>
                 </a>
                 <div
-                  class="collapse"
+                  className="collapse"
                   id="pagesCollapseError"
                   aria-labelledby="headingOne"
                   data-parent="#sidenavAccordionPages"
                 >
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="401.html">
+                  <nav className="sb-sidenav-menu-nested nav">
+                    <a className="nav-link" href="401.html">
                       401 Pagina
                     </a>
-                    <a class="nav-link" href="404.html">
+                    <a className="nav-link" href="404.html">
                       404 Pagina
                     </a>
-                    <a class="nav-link" href="500.html">
+                    <a className="nav-link" href="500.html">
                       500 Pagina
                     </a>
                   </nav>
@@ -140,8 +139,8 @@ const Sidebar = () => {
               </nav>
             </div>
           </div>
-          <div class="sb-sidenav-footer">
-            <div class="small">Ingresado como:</div>
+          <div className="sb-sidenav-footer">
+            <div className="small">Ingresado como:</div>
             {user.displayName || user.email}
           </div>
         </div>

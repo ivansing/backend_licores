@@ -15,8 +15,8 @@ export const Home = () => {
 
           <div id="layoutSidenav_content">
             <main>
-              <div class="container-fluid">
-                <h1 class="mt-4">Principal</h1>
+              <div className="container-fluid">
+                <h1 className="mt-4">Principal</h1>
               </div>
             </main>
 

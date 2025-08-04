@@ -2,10 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Derechos &copy; Pagina Web 2022</div>
+    <footer className="py-4 bg-light mt-auto">
+      <div className="container-fluid">
+        <div className="d-flex align-items-center justify-content-between small">
+          <div className="text-muted">Derechos &copy; Pagina Web 2022</div>
           <div>
             <a href="#">Politica de privacidad</a>
             &middot;

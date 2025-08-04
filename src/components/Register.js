@@ -41,36 +41,36 @@ const Register = () => {
     <div id="layoutAuthentication">
       <div id="layoutAuthentication_content">
         <main>
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-7">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                  <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-lg-7">
+                <div className="card shadow-lg border-0 rounded-lg mt-5">
+                  <div className="card-header">
+                    <h3 className="text-center font-weight-light my-4">
                       Crear una Cuenta
                     </h3>
                     {error && <Alert message={error} />}
                   </div>
-                  <div class="card-body">
+                  <div className="card-body">
                     <form id="signup-form" onSubmit={handleSubmit}>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Direccion Email</label>
+                      <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Direccion Email</label>
                         <input
                           type="email"
-                          class="form-control"
+                          className="form-control"
                           name="email"
                           placeholder="tucorreo@ejemplo.com"
                           aria-describedby="emailHelp"
                           onChange={handleChange}
                           required
                         />
-                        {/* <!--<small id="emailHelp" class="form-text text-muted">Tus datos son guardados seguramente.</small>--> */}
+                        {/* <!--<small id="emailHelp" className="form-text text-muted">Tus datos son guardados seguramente.</small>--> */}
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Contraseña</label>
+                      <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Contraseña</label>
                         <input
                           type="password"
-                          class="form-control"
+                          className="form-control"
                           placeholder="******"
                           name="password"
                           onChange={handleChange}
@@ -78,13 +78,13 @@ const Register = () => {
                         />
                       </div>
 
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" className="btn btn-primary">
                         Registrarse
                       </button>
                     </form>
                   </div>
-                  <div class="card-footer text-center">
-                    <div class="small">
+                  <div className="card-footer text-center">
+                    <div className="small">
                       <Link to="/login">¿Tienes una cuenta? Ingresa</Link>
                     </div>
                   </div>
@@ -95,10 +95,10 @@ const Register = () => {
         </main>
       </div>
       <div id="layoutAuthentication_footer">
-        <footer class="py-4 bg-light mt-auto">
-          <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-              <div class="text-muted">Derechos &copy; Tu pagina 2021</div>
+        <footer className="py-4 bg-light mt-auto">
+          <div className="container-fluid">
+            <div className="d-flex align-items-center justify-content-between small">
+              <div className="text-muted">Derechos &copy; Tu pagina 2021</div>
               <div>
                 <a href="#">Politica de privacidad</a>
                 &middot;
