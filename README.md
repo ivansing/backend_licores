@@ -1,70 +1,251 @@
-# Getting Started with Create React App
+# Backend Licores - Inventory Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based inventory management system for liquor store operations, featuring Firebase authentication, real-time data management, and modern UI components.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [API Integration](#api-integration)
+- [Security Features](#security-features)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend Licores is a modern web application designed to streamline inventory management for liquor retail operations. The system provides comprehensive CRUD operations for products, categories, and client management with secure authentication and real-time data synchronization.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### Core Functionality
+- **Product Management**: Complete CRUD operations for inventory items
+- **Category Management**: Organize products by categories with dynamic creation
+- **Client Management**: Customer database with detailed information tracking
+- **User Authentication**: Secure Firebase-based authentication system
+- **Protected Routes**: Role-based access control for sensitive operations
+- **Real-time Updates**: Live data synchronization across all components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Interface
+- **Responsive Design**: Bootstrap-based responsive layout
+- **Material-UI Components**: Modern UI with Material Design principles
+- **Interactive Alerts**: SweetAlert2 integration for user notifications
+- **Error Handling**: Comprehensive error boundary implementation
+- **Progressive Web App**: PWA capabilities for enhanced user experience
 
-### `npm run build`
+## Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
+- **React 18.2.0** - Modern React with hooks and functional components
+- **React Router DOM 6.4.0** - Client-side routing and navigation
+- **Material-UI 5.10.6** - Component library and design system
+- **Bootstrap 5.2.1** - CSS framework for responsive design
+- **Styled Components 5.3.5** - CSS-in-JS styling solution
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend Services
+- **Firebase 9.10.0** - Backend-as-a-Service platform
+  - Firestore - NoSQL document database
+  - Authentication - User management and security
+  - Hosting - Web application deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Development Tools
+- **Create React App** - Build toolchain and development server
+- **ESLint** - Code linting and quality assurance
+- **Jest** - Testing framework
+- **Web Vitals** - Performance monitoring
 
-### `npm run eject`
+## Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Before running this application, ensure you have the following installed:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Node.js** (version 16.0.0 or higher)
+- **npm** (version 8.0.0 or higher)
+- **Firebase CLI** (for deployment)
+- **Git** (for version control)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd backend_licores
+   ```
 
-## Learn More
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Configure Firebase**
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+   - Enable Firestore Database
+   - Enable Authentication (Email/Password)
+   - Generate web app configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Set up environment variables** (see [Environment Variables](#environment-variables))
 
-### Code Splitting
+5. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Environment Variables
 
-### Analyzing the Bundle Size
+Create a `.env` file in the root directory with the following Firebase configuration:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```env
+REACT_APP_FIREBASE_API_KEY=your_api_key_here
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+```
 
-### Making a Progressive Web App
+**Security Note**: Never commit environment variables to version control. Add `.env` to your `.gitignore` file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Usage
 
-### Advanced Configuration
+### Development Commands
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+# Start development server
+npm start
 
-### Deployment
+# Run tests
+npm test
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Build for production
+npm run build
 
-### `npm run build` fails to minify
+# Deploy to Firebase (requires Firebase CLI)
+firebase deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Application Access
+
+- **Development**: http://localhost:3000
+- **Authentication**: Register new users or login with existing credentials
+- **Protected Routes**: All main features require authentication
+
+## Project Structure
+
+```
+backend_licores/
+├── public/                 # Static assets and HTML template
+├── src/
+│   ├── components/         # Reusable React components
+│   │   ├── Alert.js       # Notification system
+│   │   ├── Categorias.js  # Category management
+│   │   ├── Clientes.js    # Client management
+│   │   ├── Create.js      # Product creation
+│   │   ├── CreateCategory.js # Category creation
+│   │   ├── Edit.js        # Product editing
+│   │   ├── ErrorBoundary.js # Error handling
+│   │   ├── Footer.js      # Page footer
+│   │   ├── Header.js      # Navigation header
+│   │   ├── Productos.js   # Product management
+│   │   ├── ProtectedRoute.js # Route protection
+│   │   ├── Register.js    # User registration
+│   │   └── Sidebar.js     # Navigation sidebar
+│   ├── context/           # React Context providers
+│   │   └── authContext.js # Authentication context
+│   ├── firebaseConfig/    # Firebase configuration
+│   │   └── firebase.js    # Firebase initialization
+│   ├── pages/             # Page components
+│   │   ├── Home.js        # Dashboard/landing page
+│   │   └── Login.js       # Authentication page
+│   ├── styles/            # CSS stylesheets
+│   ├── App.js             # Main application component
+│   └── index.js           # Application entry point
+├── package.json           # Dependencies and scripts
+└── README.md             # Project documentation
+```
+
+## API Integration
+
+### Firestore Collections
+
+The application uses the following Firestore collections:
+
+- **products** - Product inventory data
+- **categories** - Product categorization
+- **users** - Client/customer information
+- **auth** - User authentication data (managed by Firebase Auth)
+
+### Data Models
+
+```javascript
+// Product Model
+{
+  id: string,
+  name: string,
+  category: string,
+  price: number,
+  stock: number,
+  description: string,
+  isActive: boolean,
+  createdAt: timestamp,
+  updatedAt: timestamp
+}
+
+// Category Model
+{
+  id: string,
+  name: string,
+  description: string,
+  isActive: boolean,
+  createdAt: timestamp
+}
+
+// Client Model
+{
+  id: string,
+  name: string,
+  email: string,
+  phone: string,
+  address: string,
+  isActive: boolean,
+  createdAt: timestamp
+}
+```
+
+## Security Features
+
+- **Firebase Authentication**: Secure user registration and login
+- **Protected Routes**: Authenticated access to sensitive operations
+- **Environment Variables**: Secure configuration management
+- **Error Boundaries**: Graceful error handling and recovery
+- **Input Validation**: Client-side and server-side data validation
+- **HTTPS**: Secure data transmission (production)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow React best practices and hooks patterns
+- Maintain consistent code style with ESLint configuration
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation for significant changes
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Maintained by**: Development Team  
+**Last Updated**: August 2025  
+**Version**: 0.1.0
